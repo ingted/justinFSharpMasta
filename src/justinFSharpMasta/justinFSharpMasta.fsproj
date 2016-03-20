@@ -65,6 +65,7 @@
     <Compile Include="bootstrapHelpers.fs" />
     <Compile Include="scripts.fs" />
     <Compile Include="pages.fs" />
+    <Compile Include="database.fs" />
     <Compile Include="Program.fs" />
     <Content Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

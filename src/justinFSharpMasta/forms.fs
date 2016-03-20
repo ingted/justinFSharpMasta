@@ -43,3 +43,11 @@ let convertStuff (stuffForm : StuffForm) =
   }
 
 let stuffForm : Form<StuffForm> = Form ([],[])
+
+type Car =
+  {
+    Make : string
+    Model : string
+    Year : int
+    Price : int
+  }
