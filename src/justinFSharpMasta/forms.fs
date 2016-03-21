@@ -22,27 +22,40 @@ type Visibility =
   | Public
   | Private
 
-type StuffForm =
+type RegisterForm =
   {
-    Visiblity : string
-    Count : decimal
+    FirstName : string
+    LastName : string
+    Email : string
+    Password : string
+    RepeatPassword : string
+    Visibility : string
+    Age : decimal
   }
 
-type Stuff =
+type Register =
   {
+    FirstName : string
+    LastName : string
+    Email : string
+    Password : string
+    RepeatPassword : string
     Visibility : Visibility
-    Count : int
+    Age : int
   }
 
-let defaultStuff = { Count = 1; Visibility = Private }
-
-let convertStuff (stuffForm : StuffForm) =
+let convertRegisterForm (registerForm : RegisterForm) =
   {
-    Visibility = fromString<Visibility> stuffForm.Visiblity
-    Count = int stuffForm.Count
+    FirstName = registerForm.FirstName
+    LastName = registerForm.LastName
+    Email = registerForm.Email
+    Password = registerForm.Password
+    RepeatPassword = registerForm.RepeatPassword
+    Visibility = fromString<Visibility> registerForm.Visibility
+    Age = int registerForm.Age
   }
 
-let stuffForm : Form<StuffForm> = Form ([],[])
+let registerForm : Form<RegisterForm> = Form ([],[])
 
 type Car =
   {

@@ -15,10 +15,11 @@ let hello =
 
 let form =
   choose [
-    GET >=> warbler (fun _ -> OK "A Form")
-    POST >=> bindToForm stuffForm (fun stuffForm ->
-      let form = forms.convertStuff stuffForm
-      OK "A Form")
+    GET >=> OK pages.form
+    POST >=> bindToForm registerForm (fun registerForm ->
+      let form = forms.convertRegisterForm registerForm
+      let message = sprintf "Parsed form: \r\n%A" form
+      OK message)
   ]
 
 let grid =
@@ -35,7 +36,7 @@ let routes =
         path paths.grid >=> grid
       ]
 
-      path paths.form >=> warbler (fun _ -> OK pages.form)
+      path paths.form >=> form
 
       pathRegex "(.*)\.(css|png|gif|js|ico|woff|tff)" >=> Files.browseHome
     ]

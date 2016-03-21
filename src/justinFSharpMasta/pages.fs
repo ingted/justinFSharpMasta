@@ -31,18 +31,42 @@ let hello time =
     ]
     scripts.common
 
+let private common_table decription formElements =
+  container [
+    row [
+      block_flat [
+        header [ h3 decription ]
+        div [
+          form_horizontal [
+            content (formElements @ [form_group [ sm12 [ pull_right [ button_submit ] ] ] ])
+          ]
+        ]
+      ]
+    ]
+  ]
+
+let visibilityOptions = ["Public","Public"; "Private","Private"]
+
 let form =
   base_html
     "Form"
     [
       base_header
-      container [
-        row [ h3 "a form" ]
-      ]
+      common_table
+        "Register"
+        [
+          label_text "First Name" ""
+          label_text "Last Name" ""
+          label_text "Email" ""
+          label_text "Password" ""
+          label_text "Repeat Password" ""
+          label_text "Age" ""
+          label_select_selected "Visibility" visibilityOptions ""
+        ]
     ]
     scripts.common
 
-let carsTable cars =
+let private carsTable cars =
   let toTd car =
     [
       td [ text car.Make ]
